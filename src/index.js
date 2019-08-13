@@ -1,6 +1,6 @@
 // @ts-check
 const PDFTable = require('./PDFTable').default;
-const { retryPromise } = require('./retryPromise');
+const retryPromise = require('./retryPromise');
 
 module.exports = {
   exportTo: {
