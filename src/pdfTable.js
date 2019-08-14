@@ -163,6 +163,7 @@ export default class PDFTable {
    * Verificação sé o browser é Chrome
    */
   isChromeBrowser() {
+    if (typeof window === 'undefined') return false;
     let isChrome = false;
     const isChromium = !!window.chrome;
     const winNav = window.navigator;
