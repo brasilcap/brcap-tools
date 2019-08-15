@@ -8,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
     library: 'BRCapTools',
+    globalObject: "this",
   },
   module: {
     rules: [
