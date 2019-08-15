@@ -1,5 +1,4 @@
 // @ts-check
-import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import svgLoader from './loader.svg';
 
@@ -125,6 +124,8 @@ export default class PDFTable {
    * @param {boolean} [checkChrome=true] Ignora a verificação seo browser é chrome
    */
   constructor(pages, fileName, format, checkChrome) {
+    if (typeof window === 'undefined') return console.log('pdfTable só funciona no browser');
+    this.jsPDF = require('jspdf');
     this.isChrome = this.isChromeBrowser();
     if (!this.isChrome && !checkChrome) return;
     if (format === 'p') {
@@ -369,7 +370,7 @@ export default class PDFTable {
     return new Promise((resolve, reject) => {
       (async () => {
         try {
-          const pdf = new jsPDF(isPortrait ? 'p' : 'l', 'pt', 'a3');
+          const pdf = new this.jsPDF(isPortrait ? 'p' : 'l', 'pt', 'a3');
           const promises = [];
           shots.map((shot, i) => {
             promises.push(new Promise((res, rej) => {
